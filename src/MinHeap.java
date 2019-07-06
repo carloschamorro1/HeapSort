@@ -27,4 +27,16 @@ public class MinHeap {
 
     }
 
+    public void sort(int[] arr){
+        final int size = dynArray.arr.length;
+
+        for (int i = (size/2) - 1; i >=0 ; i--) {
+            heapify(arr,size,i);
+        }
+
+        for (int i = size-1; i >= 0 ; i--) {
+            swap(arr,0,size);
+            heapify(arr,0,i-1);
+        }
+    }
 }
