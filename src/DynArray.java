@@ -1,6 +1,6 @@
 public class DynArray {
     public int[] arr;
-    int size;
+    public int size;
 
     public DynArray(){
         this.arr = new int[10];
@@ -10,6 +10,7 @@ public class DynArray {
     public DynArray(int [] arr){
         this.arr = arr;
     }
+
 
     private void grow(int element){
         int [] temp = new int[arr.length * 2];

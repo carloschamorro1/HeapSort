@@ -11,7 +11,7 @@ public class LectorTeclado {
     private void init(Scanner sc) {
         mSc = sc;
     }
-    
+
     public int leerEntero(String mensaje, String mensajeError) {
         int retval = 0;
         System.out.println(mensaje);
