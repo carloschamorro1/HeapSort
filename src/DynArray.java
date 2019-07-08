@@ -29,7 +29,7 @@ public class DynArray {
         }
     }
 
-    public void narrow(){
+    public void narrow(int size){
         if(size != arr.length){
             int temp[] = new int[size];
             for (int i = 0; i < temp.length ; i++) {
@@ -56,6 +56,9 @@ public class DynArray {
         return arr[--size];
     }
     public boolean isEmpty(){
+        if(size == 0){
+            return true;
+        }
         return false;
     }
 
