@@ -6,7 +6,7 @@ public class MinHeap {
     }
 
     private int padre(int indice) {
-        return indice / 2;
+        return (indice / 2);
     }
 
     private int hijoIzq(int indice) {
@@ -17,22 +17,30 @@ public class MinHeap {
         return (2 * indice) + 1;
     }
 
-    private boolean isLeaf(int indice) {
-        if (indice >= (dynArray.size / 2) && indice <= dynArray.size) {
-            return true;
-        }
-        return false;
-    }
 
     public boolean isEmpty(){
         return dynArray.isEmpty();
     }
 
+    public void swap(int [] arr, int i, int j){
+        int temp  = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     private void flotar(int indice){
-        while(indice > 1 && dynArray.arr[padre(indice)] < dynArray.arr[indice]) {
-            swap(dynArray.arr, indice, padre(indice));
-            flotar(padre(indice));
+        System.out.println(indice%2);
+        if(indice % 2 == 1) {
+            while (indice >= 1 && dynArray.arr[indice] < dynArray.arr[(indice / 2)]) {
+                swap(dynArray.arr, indice, indice / 2);
+                indice = indice / 2;
+            }
         }
+        else if(indice % 2 == 0)
+            while (indice >= 1 && dynArray.arr[indice] < dynArray.arr[(indice / 2) - 1]) {
+                swap(dynArray.arr, indice, (indice / 2) - 1);
+                indice = indice / 2;
+            }
     }
 
     private void hundir(int indice) {
@@ -52,28 +60,21 @@ public class MinHeap {
                 indice = izq;
             }
             swap(dynArray.arr, padre, indice);
-            indice = indice/2;
-        } while (padre == indice) ;
+        } while (padre == padre(indice)) ;
     }
 
     public void add(int elemento){
         dynArray.add(elemento);
-        flotar(dynArray.size - 1);
+        flotar(dynArray.size-1);
     }
 
-    public int remove(int[]arr, int elemento){
-        swap(arr,0,elemento);
-        int retval = dynArray.arr[dynArray.size-1];
+    public int remove(){
+        int retval = dynArray.arr[0];
         dynArray.size--;
-        hundir(padre(elemento));
+        hundir(padre(dynArray.size));
         return retval;
     }
 
-    public void swap(int [] arr, int i, int j){
-        int temp  = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
 
     public void sort(int[] arr){
         final int size = dynArray.size;
