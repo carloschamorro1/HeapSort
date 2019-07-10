@@ -1,4 +1,3 @@
-import java.util.Random;
 
 public class Main {
 
@@ -18,15 +17,11 @@ public class Main {
         minHeap.add(6);
         minHeap.add(22);
         minHeap.add(9);
-        minHeap.add(-5);
-        minHeap.add(-5);
-        minHeap.add(-5);
-
-
         while (!minHeap.isEmpty()) {
             dynArray.addHeap(minHeap.remove());
         }
 
+        minHeap.dynArray.narrowHeap(dynArray.size2);
         print(minHeap.dynArray.arr2);
     }
 

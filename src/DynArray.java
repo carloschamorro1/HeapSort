@@ -42,6 +42,19 @@ public class DynArray {
         }
     }
 
+    public void narrowHeap(int size){
+        if(size != arr2.length){
+            int temp[] = new int[size];
+            for (int i = 0; i < temp.length ; i++) {
+                temp[i] = arr2[i];
+            }
+            arr2 = temp;
+        }
+        else{
+            System.out.println("No se puede acotar mas el arreglo");
+        }
+    }
+
     public void narrow(int size){
         if(size != arr.length){
             int temp[] = new int[size];
