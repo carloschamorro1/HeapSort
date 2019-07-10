@@ -2,9 +2,22 @@ public class DynArray {
     public int[] arr;
     public int size;
 
+    public int [] arr2;
+    public int size2;
+
+    public void addHeap(int element){
+        if(size2 < arr2.length){
+            arr2[size2++] = element;
+        }
+        else{
+            grow(element);
+        }
+    }
     public DynArray(){
         this.arr = new int[10];
+        this.arr2 = new int[10];
         size = 0;
+        size2 = 0;
     }
 
     public DynArray(int [] arr){
@@ -53,7 +66,7 @@ public class DynArray {
     }
 
     public int removeFirst(){
-        return arr[--size];
+        return arr[0];
     }
     public boolean isEmpty(){
         if(size == 0){

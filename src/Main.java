@@ -18,12 +18,22 @@ public class Main {
         minHeap.add(6);
         minHeap.add(22);
         minHeap.add(9);
-        while(!minHeap.isEmpty()){
-          dynArray.add(minHeap.remove());
-       }
+        minHeap.add(1);
+        while (!minHeap.isEmpty()) {
+            dynArray.addHeap(minHeap.remove());
+        }
+        print(minHeap.dynArray.arr2);
 
+    }
 
-
+    //Metodo para imprimir los arreglos
+    public static void print(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (i != arr.length - 1) {
+                System.out.print(arr[i] + ",");
+            } else
+                System.out.print(arr[i]);
+        }
     }
 }
 
@@ -64,14 +74,6 @@ public class Main {
 //        System.out.print("}");
 //    }
 //
-//    //Metodo para imprimir los arreglos
-//    public static  void print(int[] arr){
-//        for (int i = 0; i <arr.length ; i++) {
-//            if(i!= arr.length-1){
-//                System.out.print(arr[i] + ",");
-//            }
-//            else
-//                System.out.print(arr[i]);
-//        }
+
 //    }
 //}

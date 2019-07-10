@@ -18,6 +18,13 @@ public class MinHeap {
     }
 
 
+    private boolean isLeaf(int pos) {
+        if (pos >= (dynArray.size / 2) && pos <= dynArray.size) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean isEmpty(){
         return dynArray.isEmpty();
     }
@@ -44,23 +51,27 @@ public class MinHeap {
     }
 
     private void hundir(int indice) {
+
+        if(isLeaf(indice)){
+            return;
+        }
+
+        int izq = indice * 2;
+        int der = (indice * 2) + 1;
         int padre;
-        int izq;
-        int der;
-        do {
-            padre = indice;
-            izq = (2 * indice);
-            der = (2 * indice) + 1;
 
-            if (der <= this.dynArray.size && dynArray.arr[der] > dynArray.arr[indice]) {
-                indice = der;
-            }
 
-            if (izq <= this.dynArray.size && dynArray.arr[izq] > dynArray.arr[indice]) {
-                indice = izq;
-            }
-            swap(dynArray.arr, padre, indice);
-        } while (padre == padre(indice)) ;
+        if (der > dynArray.arr[0]) {
+            padre = izq;
+        } else {
+            padre = this.dynArray.arr[izq] < this.dynArray.arr[der] ? izq : der;
+
+        }
+        if (this.dynArray.arr[indice] < this.dynArray.arr[padre]) {
+            return;
+        }
+        swap(dynArray.arr, padre, indice);
+        hundir(padre);
     }
 
     public void add(int elemento){
@@ -69,9 +80,13 @@ public class MinHeap {
     }
 
     public int remove(){
-        int retval = dynArray.arr[0];
-        dynArray.size--;
-        hundir(padre(dynArray.size));
+        int retval = dynArray.removeFirst();
+        if(dynArray.size != 0){
+            this.dynArray.arr[0] = dynArray.arr[dynArray.size - 1];
+            dynArray.size--;
+            this.dynArray.arr[dynArray.size] = 0;
+            this.hundir(0);
+        }
         return retval;
     }
 
