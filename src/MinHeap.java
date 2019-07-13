@@ -9,6 +9,7 @@ public class MinHeap {
         return (indice / 2);
     }
 
+
     private int hijoIzq(int indice) {
         return (2 * indice);
     }
@@ -36,42 +37,31 @@ public class MinHeap {
     }
 
     private void flotar(int indice){
-        System.out.println(indice%2);
-        if(indice % 2 == 1) {
-            while (indice >= 1 && dynArray.arr[indice] < dynArray.arr[(indice / 2)]) {
-                swap(dynArray.arr, indice, indice / 2);
-                indice = indice / 2;
-            }
+        int padre = indice/2;
+        int posicion = indice;
+        while (posicion > 0 && dynArray.arr[padre] > dynArray.arr[posicion]) {
+            swap(dynArray.arr,posicion,padre);
+            posicion = padre;
+            padre = padre/2;
         }
-        else if(indice % 2 == 0)
-            while (indice >= 1 && dynArray.arr[indice] < dynArray.arr[(indice / 2) - 1]) {
-                swap(dynArray.arr, indice, (indice / 2) - 1);
-                indice = indice / 2;
-            }
-    }
+
+}
 
     private void hundir(int indice) {
-
-        if(isLeaf(indice)){
-            return;
+        int padre = indice;
+        int hijoIzq = 2 * indice;
+        int hijoDer = 2 * indice+1;
+        if (hijoIzq < dynArray.size && dynArray.arr[padre] > dynArray.arr[hijoIzq]) {
+            padre = hijoIzq;
+        }
+        if (hijoDer < dynArray.size && dynArray.arr[padre] > dynArray.arr[hijoDer]) {
+            padre = hijoDer;
+        }
+        if (padre != indice) {
+            swap(dynArray.arr,indice, padre);
+            hundir(padre);
         }
 
-        int izq = indice * 2;
-        int der = (indice * 2) + 1;
-        int padre;
-
-
-        if (der > dynArray.arr[0]) {
-            padre = izq;
-        } else {
-            padre = this.dynArray.arr[izq] < this.dynArray.arr[der] ? izq : der;
-
-        }
-        if (this.dynArray.arr[indice] < this.dynArray.arr[padre]) {
-            return;
-        }
-        swap(dynArray.arr, padre, indice);
-        hundir(padre);
     }
 
     public void add(int elemento){
@@ -90,49 +80,4 @@ public class MinHeap {
         return retval;
     }
 
-
-    public void sort(int[] arr){
-        final int size = dynArray.size;
-        int acumulador = 0;
-        for (int i = 0; i <= size; i++) {
-            flotar(size);
-            dynArray.arr[acumulador++] = dynArray.arr[0];
-        }
-
-    }
-
-
-
-//    public void heapify(int[] arr, int n, int i){
-//        int menor = i-1;
-//        int izquierda = (2 * i)-1;
-//        int derecha = (2*i);
-//
-//        if(izquierda < n && arr[izquierda] < arr[menor]){
-//            menor = izquierda;
-//        }
-//
-//        if(derecha< n && arr[derecha] < arr[menor]){
-//            menor = derecha;
-//        }
-//
-//        if(menor != i-1){
-//            swap(arr);
-//            heapify(arr,menor,i);
-//        }
-//
-//
-//    }
-//
-//    public void sort(int[] arr){
-//        final int size = dynArray.size;
-//
-//        for (int i = (size/2)-1; i >=0 ; i--) {
-//            heapify(arr,size,i);
-//        }
-//        for (int i = size-1; i >= 0 ; i--) {
-//            swap(arr);
-//            heapify(arr,0,i-1);
-//        }
-//    }
 }

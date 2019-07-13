@@ -10,7 +10,7 @@ public class DynArray {
             arr2[size2++] = element;
         }
         else{
-            grow(element);
+            growHeap(element);
         }
     }
     public DynArray(){
@@ -32,6 +32,15 @@ public class DynArray {
         }
         arr = temp;
         arr[size++] = element;
+    }
+
+    private void growHeap(int element){
+        int [] temp = new int[arr2.length * 2];
+        for (int i = 0; i < arr2.length; i++) {
+            temp[i] = arr2[i];
+        }
+        arr2 = temp;
+        arr2[size2++] = element;
     }
     public void add(int element) {
         if(size < arr.length){
