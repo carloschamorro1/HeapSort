@@ -59,9 +59,6 @@ public class DynArray {
             }
             arr2 = temp;
         }
-        else{
-            System.out.println("No se puede acotar mas el arreglo");
-        }
     }
 
     public void narrow(int size){
@@ -71,9 +68,6 @@ public class DynArray {
                 temp[i] = arr[i];
             }
             arr = temp;
-        }
-        else{
-            System.out.println("No se puede acotar mas el arreglo");
         }
     }
 

@@ -14,7 +14,7 @@ public class Main {
                                 "Por favor ingrese un numero entero");
 
         for (int i = 0; i <opcion ; i++) {
-            minHeap.add(random.nextInt(150));
+            minHeap.add(random.nextInt(1000));
         }
 
 //        minHeap.add(5);
@@ -31,18 +31,18 @@ public class Main {
 //        minHeap.add(-9);
 
         //Arreglo sin ordenar
-        System.out.print("Arreglo sin ordenar {");
+        System.out.print("Arreglo sin ordenar: {");
         dynArray.narrow(dynArray.size);
         print(dynArray.arr);
-        System.out.print("}");
-        System.out.println("The Min Heap is ");
-
+        System.out.println("}");
+        System.out.print("El Min Heap es: {");
         while (!minHeap.isEmpty()) {
             dynArray.addHeap(minHeap.remove());
         }
 
         minHeap.dynArray.narrowHeap(dynArray.size2);
         print(minHeap.dynArray.arr2);
+        System.out.println("}");
     }
     //Metodo para imprimir los arreglos
     public static void print(int[] arr) {
