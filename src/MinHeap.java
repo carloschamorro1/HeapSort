@@ -19,13 +19,6 @@ public class MinHeap {
     }
 
 
-    private boolean isLeaf(int pos) {
-        if (pos >= (dynArray.size / 2) && pos <= dynArray.size) {
-            return true;
-        }
-        return false;
-    }
-
     public boolean isEmpty(){
         return dynArray.isEmpty();
     }
@@ -37,7 +30,7 @@ public class MinHeap {
     }
 
     private void flotar(int indice){
-        int padre = indice/2;
+        int padre = padre(indice);
         int posicion = indice;
         while (posicion > 0 && dynArray.arr[padre] > dynArray.arr[posicion]) {
             swap(dynArray.arr,posicion,padre);
@@ -61,7 +54,6 @@ public class MinHeap {
             swap(dynArray.arr,indice, padre);
             hundir(padre);
         }
-
     }
 
     public void add(int elemento){

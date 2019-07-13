@@ -77,15 +77,6 @@ public class DynArray {
         }
     }
 
-    public void queues(int element){
-        removeFirst();
-        add(element);
-    }
-
-    public void stack(int element){
-        removeLast();
-        add(element);
-    }
 
     public int removeFirst(){
         return arr[0];
@@ -97,21 +88,4 @@ public class DynArray {
         return false;
     }
 
-    public int removeLast(){
-        int retval = arr[0];
-        for (int i = 0; i < size; i++) {
-            arr[i-1] = arr[i];
-        }
-        size--;
-        return retval;
-    }
-
-
-    public int getItem(int index){
-        return arr[index];
-    }
-
-    public int getSize(){
-        return size;
-    }
 }
