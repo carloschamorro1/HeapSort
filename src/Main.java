@@ -2,20 +2,21 @@ import java.util.Random;
 
 public class Main {
 
-
+    
     public static void main(String[] args) {
 
         DynArray dynArray = new DynArray();
         LectorTeclado lt = new LectorTeclado();
         Random random = new Random();
         MinHeap minHeap = new MinHeap(dynArray);
-        System.out.println("Bienvenido");
         int opcion = lt.leerEntero("Ingrese un numero entero indicando la cantidad de elementos que desea en el arreglo de manera aleatoria",
                                 "Por favor ingrese un numero entero");
 
         for (int i = 0; i <opcion ; i++) {
             minHeap.add(random.nextInt(1000));
         }
+
+
 
 //        minHeap.add(5);
 //        minHeap.add(3);
